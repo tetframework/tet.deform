@@ -12,7 +12,7 @@ CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 requires = """
     deform>=2.0a2
-    js.deform
+    js.deform>=2.0a2
     tet.fanstatic
 """.split()
 

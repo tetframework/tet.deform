@@ -1,6 +1,9 @@
+import deform
 from deform import Form, ValidationFailure
 from js.deform import resource_mapping
+from pyramid.i18n import get_localizer
 from pyramid.threadlocal import get_current_request
+from pkg_resources import resource_filename
 
 
 def auto_need(request, form):
@@ -48,3 +51,12 @@ def includeme(config=None):
         ValidationFailure.render = validation_failure_render
 
     patch_deform()
+
+    def translator(term):
+        return get_localizer(get_current_request()).translate(term)
+
+    deform_template_dir = resource_filename('deform', 'templates/')
+    zpt_renderer = deform.ZPTRendererFactory(
+        [deform_template_dir],
+        translator=translator)
+    deform.Form.set_default_renderer(zpt_renderer)
