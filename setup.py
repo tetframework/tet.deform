@@ -17,7 +17,7 @@ requires = """
 """.split()
 
 setup(name='tet.deform',
-      version='0.1',
+      version='0.1.1',
       description='Deform integration for tet',
       long_description=README + '\n\n' + CHANGES,
       classifiers=[
